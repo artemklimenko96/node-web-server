@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 const port = process.env.PORT || 3000;
+const car_control = require('./car_information/car_control');
 
 var app = express();
 
@@ -58,6 +59,13 @@ app.get('/bad', (req, res) => {
         errorMessage: 'Bad request'
     });
 });
+
+app.get('/getChargeLocation', (req, res) => {
+	car_control.appfunc();
+	res.send({
+	});
+});
+
 app.listen(port, () => {
     console.log(`Server is up on port ${port}`);
 });
